@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import PropTypes from 'prop-types';
+import React, { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import AppFrame from '../components/AppFrame';
 import CustomersList from '../components/CustomersList';
 import CustomersActions from '../components/CustomersActions';
@@ -24,19 +24,21 @@ const customers = [
 
 class CustomersContainer extends Component {
     
+    handleAddNew = () => {
+        this.props.history.push('/customers/new');
+    }
+    
     renderBody = (customers) => (
         <div className="">
             <CustomersList 
                 customers={customers} 
-                urlPath={'customer/'}
+                urlPath={'customers/'}
             />  
             <CustomersActions>
                 <button onClick={this.handleAddNew}>Agregar</button>
             </CustomersActions>
         </div>
     );
-
-    handleAddNew = () => {}
 
     render() {
         return (
@@ -52,8 +54,4 @@ class CustomersContainer extends Component {
     }
 }
 
-// CustomersContainer.propTypes = {
-//     prop: PropTypes
-// }
-
-export default CustomersContainer;
+export default withRouter(CustomersContainer);
