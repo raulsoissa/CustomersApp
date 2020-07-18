@@ -1,5 +1,5 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const AppHeader = props => {
     return (
@@ -15,5 +15,5 @@ AppHeader.propTypes = {
     title: PropTypes.string.isRequired,
 }
 
-export default AppHeader
+export default AppHeader;
 

@@ -1,10 +1,10 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
 const CustomerData = ({name, rut, age}) => {
     return (
         <div className="customer-data">
-            <h2>Datos Cliente</h2>
+            <h2>Datos del Cliente</h2>
             <div className="">
                 <strong>Nombre</strong>
                 <i>{name}</i>
@@ -27,5 +27,5 @@ CustomerData.propTypes = {
     age: PropTypes.number.isRequired,
 }
 
-export default CustomerData
+export default CustomerData;
 

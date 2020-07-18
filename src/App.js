@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link, BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 
-export default class App extends Component {
+class App extends Component {
   render() {
     return (
       <Router>
@@ -11,6 +11,8 @@ export default class App extends Component {
           <Link to="/costumers/20200489k">Costumers 20.200.489-K</Link>
         </div>
       </Router>
-    )
+    );
   }
 }
+
+export default App;
