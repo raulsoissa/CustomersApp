@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link, BrowserRouter as Router } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const CustomerListItem = ({ name, rut, editAction, delAction, urlPath}) => {
     return (
@@ -19,6 +19,7 @@ const CustomerListItem = ({ name, rut, editAction, delAction, urlPath}) => {
 }
 
 CustomerListItem.propTypes = {
+    rut: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     editAction: PropTypes.string.isRequired,
     delAction: PropTypes.string.isRequired,

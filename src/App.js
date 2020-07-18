@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import HomeContainer from './containers/HomeContainer';
+import CustomersContainer from './containers/CustomersContainer';
 
 class App extends Component {
 
@@ -23,7 +24,7 @@ class App extends Component {
           <Switch>
             <Route path="/customers/new" component={this.renderCustomerNewContainer}/>
             <Route path="/customers/:rut" component={this.renderCustomerContainer}/>
-            <Route path="/customers" component={this.renderCustomerListContainer}/>
+            <Route path="/customers" component={CustomersContainer}/>
             <Route path="/" component={HomeContainer}/>
           </Switch>
         </div>
