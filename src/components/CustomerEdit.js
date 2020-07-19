@@ -4,9 +4,18 @@ import { reduxForm, Field } from 'redux-form';
 //import { connect } from 'react-redux'
 import { setPropsAsInitial } from '../helpers/setPropsAsInitial';
 
-const isRequired = value => (
-    !value && "Este campo es requerido"
-);
+// const isRequired = value => (
+//     !value && "Este campo es requerido"
+// );
+
+const validate = values => {
+    const error = {};
+    if (!values.name) {
+        error.name = "El campo nombre es requerido";
+    }
+
+    return error;
+}
 
 const isNumber = value => (
     isNaN(Number(value)) && "El campo debe ser un número"
@@ -31,7 +40,7 @@ const CustomerEdit = ({ name, rut, age}) => {
                     name="name"    
                     component={MyField} 
                     type="text" 
-                    validate={isRequired}
+                    //validate={}
                     label="Nombre">
                 </Field>
             
@@ -39,7 +48,7 @@ const CustomerEdit = ({ name, rut, age}) => {
                     name="rut" 
                     component={MyField} 
                     type="text" 
-                    validate={isRequired}
+                    //validate={}
                     label="Rut">
                 </Field>
                 
@@ -47,7 +56,7 @@ const CustomerEdit = ({ name, rut, age}) => {
                     name="age" 
                     component={MyField} 
                     type="number" 
-                    validate={[isNumber, isRequired]}
+                    validate={[isNumber]}
                     label="Edad">
                 </Field>
             </form>
@@ -61,7 +70,7 @@ CustomerEdit.propTypes = {
     age: PropTypes.number,
 }
 
-const CustomerEditForm = reduxForm({ form: 'CustomerEdit' })(CustomerEdit)
+const CustomerEditForm = reduxForm({ form: 'CustomerEdit', validate })(CustomerEdit)
 
 export default setPropsAsInitial(CustomerEditForm);
 
