@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Route } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 import AppFrame from '../components/AppFrame';
 import { getCustomerByRut } from '../selectors/customers';
 import CustomerEdit from '../components/CustomerEdit';
@@ -15,11 +15,15 @@ class CustomerContainer extends Component {
         console.log(JSON.stringify(values));
     }
 
+    handleOnBack = () => {
+        this.props.history.goBack();
+    }
+
     renderBody = () => (
         <Route path="/customers/:rut/edit" children={
             ({ match }) => {
                 const CustomerControl = match ? CustomerEdit : CustomerData;
-                return <CustomerControl {...this.props.customer} onSubmit={this.handleSubmit}/>
+                return <CustomerControl {...this.props.customer} onSubmit={this.handleSubmit} onBack={this.handleOnBack}/>
             }
         }/>
     );
@@ -45,4 +49,4 @@ const mapStateToProps = (state, props) => ({
     customer: getCustomerByRut(state, props)
 });
 
-export default connect(mapStateToProps, null)(CustomerContainer);
+export default withRouter(connect(mapStateToProps, null)(CustomerContainer));
