@@ -35,6 +35,10 @@ const MyField = ({input, meta, type, label, name}) => (
     </div>
 );
 
+const toNumber = value => value && Number(value);
+const toUpper = value => toUpper && value.toUpperCase(); 
+const toLower = value => value && value.toLowerCase();
+
 const CustomerEdit = ({ name, rut, age, handleSubmit, submitting, onBack}) => {
     return (
         <div className="">
@@ -43,13 +47,17 @@ const CustomerEdit = ({ name, rut, age, handleSubmit, submitting, onBack}) => {
                 <Field 
                     name="name"    
                     component={MyField}
-                    label="Nombre">
+                    label="Nombre"
+                    parse={toUpper}
+                    format={toLower}>
                 </Field>
             
                 <Field 
                     name="rut" 
                     component={MyField} 
-                    label="Rut">
+                    label="Rut"
+                    parse={toUpper}
+                    format={toLower}>
                 </Field>
                 
                 <Field 
@@ -57,7 +65,8 @@ const CustomerEdit = ({ name, rut, age, handleSubmit, submitting, onBack}) => {
                     component={MyField} 
                     type="number" 
                     validate={isNumber}
-                    label="Edad">
+                    label="Edad"
+                    parse={toNumber}>
                 </Field>
                 <CustomersActions>
                     <button type="submit" disabled={submitting}>Aceptar</button>
