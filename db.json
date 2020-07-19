@@ -1,0 +1,36 @@
+{
+  "customers": [
+    {
+        "rut": "20200489-k",
+        "name": "Raúl Soissa",
+        "age": 21
+    },
+    {
+        "rut": "11289793-3",
+        "name": "Elsa Rodríguez",
+        "age": 51
+    },
+    {
+        "rut": "27000000-5",
+        "name": "Juan Perez",
+        "age": 45
+    }
+  ],
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

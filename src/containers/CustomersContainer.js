@@ -55,7 +55,7 @@ CustomersContainer.defaultProps = {
 }
 
 const mapStateToProps = state => ({
-    customers: getCustomers(state);
+    customers: getCustomers(state)
 });
 
 export default withRouter(connect(mapStateToProps, { fetchCustomers })(CustomersContainer));
