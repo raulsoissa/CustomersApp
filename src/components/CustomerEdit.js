@@ -35,7 +35,7 @@ const MyField = ({input, meta, type, label, name}) => (
     </div>
 );
 
-const CustomerEdit = ({ handleSubmit, submitting, onBack}) => {
+const CustomerEdit = ({ name, rut, age, handleSubmit, submitting, onBack}) => {
     return (
         <div className="">
             <h2>Edición del Cliente</h2>
