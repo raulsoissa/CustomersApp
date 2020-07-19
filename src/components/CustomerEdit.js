@@ -5,16 +5,19 @@ import { reduxForm, Field } from 'redux-form';
 import { setPropsAsInitial } from '../helpers/setPropsAsInitial';
 import CustomersActions from '../components/CustomersActions'
 
-// const isRequired = value => (
-//     !value && "Este campo es requerido"
-// );
 
 const validate = values => {
     const error = {};
+
     if (!values.name) {
         error.name = "El campo nombre es requerido";
     }
-
+    if (!values.rut) {
+        error.rut = "El campo rut es requerido";
+    }
+    if (!values.age) {
+        error.age = "El campo edad es requerido";
+    }
     return error;
 }
 
@@ -32,24 +35,20 @@ const MyField = ({input, meta, type, label, name}) => (
     </div>
 );
 
-const CustomerEdit = ({ name, rut, age, handleSubmit, submitting, onBack}) => {
+const CustomerEdit = ({ handleSubmit, submitting, onBack}) => {
     return (
         <div className="">
-            <h2>Edición del Componente</h2>
+            <h2>Edición del Cliente</h2>
             <form onSubmit={handleSubmit}>
                 <Field 
                     name="name"    
-                    component={MyField} 
-                    type="text" 
-                    //validate={}
+                    component={MyField}
                     label="Nombre">
                 </Field>
             
                 <Field 
                     name="rut" 
                     component={MyField} 
-                    type="text" 
-                    //validate={}
                     label="Rut">
                 </Field>
                 
@@ -57,7 +56,7 @@ const CustomerEdit = ({ name, rut, age, handleSubmit, submitting, onBack}) => {
                     name="age" 
                     component={MyField} 
                     type="number" 
-                    validate={[isNumber]}
+                    validate={isNumber}
                     label="Edad">
                 </Field>
                 <CustomersActions>

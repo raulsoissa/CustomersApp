@@ -1,19 +1,22 @@
 {
   "customers": [
     {
-        "rut": "20200489-k",
-        "name": "Raúl Soissa",
-        "age": 21
+      "id": "20200489-k",
+      "rut": "20200489-k",
+      "name": "Raúl Soissa",
+      "age": 21
     },
     {
-        "rut": "11289793-3",
-        "name": "Elsa Rodríguez",
-        "age": 51
+      "id": "11289793-3",
+      "rut": "11289793-3",
+      "name": "Elsa Rodríguez",
+      "age": 51
     },
     {
-        "rut": "27000000-5",
-        "name": "Juan Perez",
-        "age": 45
+      "id": "27000000-5",
+      "rut": "27000000-5",
+      "name": "Juan Perez",
+      "age": 45
     }
   ],
   "posts": [

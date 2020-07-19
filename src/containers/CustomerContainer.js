@@ -7,6 +7,7 @@ import { getCustomerByRut } from '../selectors/customers';
 import CustomerEdit from '../components/CustomerEdit';
 import CustomerData from '../components/CustomerData';
 import { fetchCustomers } from '../actions/fetchCustomers';
+import { updateCustomer } from '../actions/UpdateCustomer';
 
 
 
@@ -21,6 +22,8 @@ class CustomerContainer extends Component {
 
     handleSubmit = values => {
         console.log(JSON.stringify(values));
+        const { id } = values;
+        return this.props.updateCustomer(id, values);
     }
 
     handleOnBack = () => {
@@ -31,7 +34,9 @@ class CustomerContainer extends Component {
         <Route path="/customers/:rut/edit" children={
             ({ match }) => {
                 const CustomerControl = match ? CustomerEdit : CustomerData;
-                return <CustomerControl {...this.props.customer} onSubmit={this.handleSubmit} onBack={this.handleOnBack}/>
+                return <CustomerControl {...this.props.customer} 
+                    onSubmit={this.handleSubmit} 
+                    onBack={this.handleOnBack}/>
             }
         }/>
     );
@@ -50,8 +55,9 @@ class CustomerContainer extends Component {
 
 CustomerContainer.propTypes = {
     rut: PropTypes.string.isRequired,
-    customer: PropTypes.object.isRequired,
+    customer: PropTypes.object,
     fetchCustomers: PropTypes.func.isRequired,
+    updateCustomer: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state, props) => ({
@@ -59,5 +65,6 @@ const mapStateToProps = (state, props) => ({
 });
 
 export default withRouter(connect(mapStateToProps, {
-    fetchCustomers
+    fetchCustomers,
+    updateCustomer
 })(CustomerContainer));
