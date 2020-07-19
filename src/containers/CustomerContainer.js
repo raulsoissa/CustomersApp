@@ -10,7 +10,7 @@ class CustomerContainer extends Component {
                 <AppFrame
                     header={`Cliente ${this.props.rut}`}
                     body={
-                        <p>Datos del Cliente</p>
+                        <p>Datos del Cliente "{this.props.customer.name}"</p>
                     }
                 />
             </div>
@@ -20,6 +20,11 @@ class CustomerContainer extends Component {
 
 CustomerContainer.propTypes = {
     rut: PropTypes.string.isRequired,
+    customer: PropTypes.object.isRequired,
 };
 
-export default connect(null, null)(CustomerContainer);
+const mapStateToProps = (state, props) => ({
+    customer: state.customers.find( c => c.rut === props.rut)
+});
+
+export default connect(mapStateToProps, null)(CustomerContainer);
