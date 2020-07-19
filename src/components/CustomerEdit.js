@@ -4,6 +4,7 @@ import { reduxForm, Field } from 'redux-form';
 //import { connect } from 'react-redux'
 import { setPropsAsInitial } from '../helpers/setPropsAsInitial';
 import CustomersActions from '../components/CustomersActions'
+import { Prompt } from 'react-router-dom';
 
 
 const validate = values => {
@@ -39,7 +40,7 @@ const toNumber = value => value && Number(value);
 const toUpper = value => toUpper && value.toUpperCase(); 
 const toLower = value => value && value.toLowerCase();
 
-const CustomerEdit = ({ name, rut, age, handleSubmit, submitting, onBack}) => {
+const CustomerEdit = ({ name, rut, age, handleSubmit, submitting, onBack, pristine, submitSucceeded}) => {
     return (
         <div className="">
             <h2>Edición del Cliente</h2>
@@ -69,9 +70,14 @@ const CustomerEdit = ({ name, rut, age, handleSubmit, submitting, onBack}) => {
                     parse={toNumber}>
                 </Field>
                 <CustomersActions>
-                    <button type="submit" disabled={submitting}>Aceptar</button>
-                    <button onClick={onBack}>Cancelar</button>
+                    <button type="submit" disabled={pristine || submitting}>Aceptar</button>
+                    <button type="button" disabled={submitting} onClick={onBack}>Cancelar</button>
                 </CustomersActions>
+                <Prompt
+                    when={!pristine && !submitSucceeded}
+                    message="Se perderán los datos si continúa">
+
+                    </Prompt>
             </form>
         </div>
     )

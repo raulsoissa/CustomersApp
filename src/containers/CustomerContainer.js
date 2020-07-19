@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { SubmissionError } from 'redux-form';
 import PropTypes from 'prop-types';
 import { Route, withRouter } from 'react-router-dom';
 import AppFrame from '../components/AppFrame';
@@ -23,7 +24,11 @@ class CustomerContainer extends Component {
     handleSubmit = values => {
         console.log(JSON.stringify(values));
         const { id } = values;
-        return this.props.updateCustomer(id, values);
+        return this.props.updateCustomer(id, values).then( r => {
+            if (r.error) {
+                throw new SubmissionError(r.payload);
+            }
+        });
     }
 
     handleOnBack = () => {
