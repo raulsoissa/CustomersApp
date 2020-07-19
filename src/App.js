@@ -4,6 +4,7 @@ import './App.css';
 import HomeContainer from './containers/HomeContainer';
 import CustomersContainer from './containers/CustomersContainer';
 import CustomerContainer from './containers/CustomerContainer';
+import CustomerNewContainer from './containers/CustomerNewContainer';
 
 class App extends Component {
 
@@ -23,7 +24,7 @@ class App extends Component {
         <div className="App">
           {/* en Switch hay que poner la ruta más especifica primero */}
           <Switch>
-            <Route path="/customers/new" component={this.renderCustomerNewContainer}/>
+            <Route path="/customers/new" component={CustomerNewContainer}/>
             <Route path="/customers/:rut" 
               render={props => <CustomerContainer rut={props.match.params.rut}/>}
             />
