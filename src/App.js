@@ -24,7 +24,9 @@ class App extends Component {
           {/* en Switch hay que poner la ruta más especifica primero */}
           <Switch>
             <Route path="/customers/new" component={this.renderCustomerNewContainer}/>
-            <Route path="/customers/:rut" component={CustomerContainer}/>
+            <Route path="/customers/:rut" 
+              render={props => <CustomerContainer rut={props.match.params.rut}/>}
+            />
             <Route path="/customers" component={CustomersContainer}/>
             <Route path="/" component={HomeContainer}/>
           </Switch>

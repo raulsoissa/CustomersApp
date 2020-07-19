@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import AppFrame from '../components/AppFrame';
 
 class CustomerContainer extends Component {
@@ -8,7 +8,7 @@ class CustomerContainer extends Component {
         return (
             <div className="">
                 <AppFrame
-                    header={'Cliente'}
+                    header={`Cliente ${this.props.rut}`}
                     body={
                         <p>Datos del Cliente</p>
                     }
@@ -18,8 +18,8 @@ class CustomerContainer extends Component {
     }
 }
 
-// CustomerContainer.propTypes = {
-
-// };
+CustomerContainer.propTypes = {
+    rut: PropTypes.string.isRequired,
+};
 
 export default connect(null, null)(CustomerContainer);
