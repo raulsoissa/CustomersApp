@@ -8,9 +8,14 @@ const isRequired = value => (
     !value && "Este campo es requerido"
 );
 
-const MyField = ({input, meta}) => (
+const isNumber = value => (
+    isNaN(Number(value)) && "El campo debe ser un número"
+);
+
+const MyField = ({input, meta, type, label, name}) => (
     <div className="">
-        <input {...input} type="text"/>
+        <label htmlFor={name}>{label}</label>
+        <input {...input} type={!type ? "text" : type}/>
         {
             meta.touched && meta.error && <span>{meta.error}</span>
         }
@@ -22,18 +27,29 @@ const CustomerEdit = ({ name, rut, age}) => {
         <div className="">
             <h2>Edición del Componente</h2>
             <form action="">
-                <div>
-                    <label htmlFor="name">Nombre</label>
-                    <Field name="name" component={MyField} type="text" validate={isRequired}></Field>
-                </div>
-                <div>
-                    <label htmlFor="rut">Rut</label>
-                    <Field name="rut" component="input" type="text" validate={isRequired}></Field>
-                </div>
-                <div>
-                    <label htmlFor="age">Edad</label>
-                    <Field name="age" component="input" type="number" validate={isRequired}></Field>
-                </div>
+                <Field 
+                    name="name"    
+                    component={MyField} 
+                    type="text" 
+                    validate={isRequired}
+                    label="Nombre">
+                </Field>
+            
+                <Field 
+                    name="rut" 
+                    component={MyField} 
+                    type="text" 
+                    validate={isRequired}
+                    label="Rut">
+                </Field>
+                
+                <Field 
+                    name="age" 
+                    component={MyField} 
+                    type="number" 
+                    validate={[isNumber, isRequired]}
+                    label="Edad">
+                </Field>
             </form>
         </div>
     )
