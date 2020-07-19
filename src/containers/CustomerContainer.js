@@ -1,15 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Route } from 'react-router-dom';
 import AppFrame from '../components/AppFrame';
 import { getCustomerByRut } from '../selectors/customers';
-import { Route } from 'react-router-dom';
+import CustomerEdit from '../components/CustomerEdit';
+import CustomerData from '../components/CustomerData';
+
+
 
 class CustomerContainer extends Component {
 
     renderBody = () => (
         <Route path="/customers/:rut/edit" children={
-            ({ match }) => (match ? <p>Es edición</p> : <p>No es edición</p> )
+            ({ match }) => {
+                const CustomerControl = match ? CustomerEdit : CustomerData;
+                return <CustomerControl {...this.props.customer}/>
+            }
         }/>
     )
 
