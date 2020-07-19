@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './App.css';
 import HomeContainer from './containers/HomeContainer';
 import CustomersContainer from './containers/CustomersContainer';
+import CustomerContainer from './containers/CustomerContainer';
 
 class App extends Component {
 
@@ -23,7 +24,7 @@ class App extends Component {
           {/* en Switch hay que poner la ruta más especifica primero */}
           <Switch>
             <Route path="/customers/new" component={this.renderCustomerNewContainer}/>
-            <Route path="/customers/:rut" component={this.renderCustomerContainer}/>
+            <Route path="/customers/:rut" component={CustomerContainer}/>
             <Route path="/customers" component={CustomersContainer}/>
             <Route path="/" component={HomeContainer}/>
           </Switch>
