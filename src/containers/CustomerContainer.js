@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AppFrame from '../components/AppFrame';
+import { getCustomerByRut } from '../selectors/customers';
 
 class CustomerContainer extends Component {
     render() {
@@ -24,7 +25,7 @@ CustomerContainer.propTypes = {
 };
 
 const mapStateToProps = (state, props) => ({
-    customer: state.customers.find( c => c.rut === props.rut)
+    customer: getCustomerByRut(state, props)
 });
 
 export default connect(mapStateToProps, null)(CustomerContainer);
