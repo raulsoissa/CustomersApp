@@ -17,6 +17,30 @@
       "rut": "27000000-5",
       "name": "JUAN PEREZ",
       "age": 45
+    },
+    {
+      "name": "JAVIERA",
+      "rut": "19539810-0",
+      "age": 23,
+      "id": "49Rz09u"
+    },
+    {
+      "name": "SCOTT",
+      "rut": "12344321-1",
+      "age": 50,
+      "id": "mBEPt4E"
+    },
+    {
+      "name": "RAÚL SOISSA!",
+      "rut": "2600489-K",
+      "age": 78,
+      "id": "3slyLJV"
+    },
+    {
+      "name": "FERNANDO VILLEGAS",
+      "rut": "1298371",
+      "age": 12,
+      "id": "hwPP8JD"
     }
   ],
   "posts": [

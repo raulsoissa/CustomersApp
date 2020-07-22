@@ -10,8 +10,9 @@ import { getCustomers } from '../selectors/customers';
 
 class CustomersContainer extends Component {
     
-    componentDidMount() {
+    componentDidMount() {    
         this.props.fetchCustomers();
+        
     }
     
 

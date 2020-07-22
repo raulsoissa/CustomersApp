@@ -40,7 +40,7 @@ const toNumber = value => value && Number(value);
 const toUpper = value => toUpper && value.toUpperCase(); 
 const toLower = value => value && value.toLowerCase();
 
-const CustomerEdit = ({ name, rut, age, handleSubmit, submitting, onBack, pristine, submitSucceeded}) => {
+const CustomerEdit = ({handleSubmit, submitting, onBack, pristine, submitSucceeded}) => {
     return (
         <div className="">
             <h2>Edición del Cliente</h2>
